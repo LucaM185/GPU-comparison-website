@@ -1,0 +1,173 @@
+[
+  {
+    "brand": "Apple",
+    "name": "M1",
+    "releaseDate": 2020.0,
+    "bandwidth": "68 GB/s",
+    "compute": "2.600 TFLOPS",
+    "tensorCores": "",
+    "memory": 8.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M1 Pro",
+    "releaseDate": 2021.0,
+    "bandwidth": "200 GB/s",
+    "compute": "5.200 TFLOPS",
+    "tensorCores": "",
+    "memory": 16.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M1 Max",
+    "releaseDate": 2021.0,
+    "bandwidth": "400 GB/s",
+    "compute": "10.600 TFLOPS",
+    "tensorCores": "",
+    "memory": 32.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M1 Ultra",
+    "releaseDate": 2022.0,
+    "bandwidth": "800 GB/s",
+    "compute": "21.200 TFLOPS",
+    "tensorCores": "",
+    "memory": 64.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M2",
+    "releaseDate": 2022.0,
+    "bandwidth": "100 GB/s",
+    "compute": "3.600 TFLOPS",
+    "tensorCores": "",
+    "memory": 8.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M2 Pro",
+    "releaseDate": 2023.0,
+    "bandwidth": "200 GB/s",
+    "compute": "6.800 TFLOPS",
+    "tensorCores": "",
+    "memory": 16.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M2 Max",
+    "releaseDate": 2023.0,
+    "bandwidth": "400 GB/s",
+    "compute": "13.500 TFLOPS",
+    "tensorCores": "",
+    "memory": 32.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M2 Ultra",
+    "releaseDate": 2023.0,
+    "bandwidth": "800 GB/s",
+    "compute": "27.000 TFLOPS",
+    "tensorCores": "",
+    "memory": 64.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M3",
+    "releaseDate": 2023.0,
+    "bandwidth": "102 GB/s",
+    "compute": "4.100 TFLOPS",
+    "tensorCores": "",
+    "memory": 8.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M3 Pro",
+    "releaseDate": 2023.0,
+    "bandwidth": "150 GB/s",
+    "compute": "7.300 TFLOPS",
+    "tensorCores": "",
+    "memory": 18.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M3 Max",
+    "releaseDate": 2023.0,
+    "bandwidth": "400 GB/s",
+    "compute": "14.200 TFLOPS",
+    "tensorCores": "",
+    "memory": 36.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M3 Ultra",
+    "releaseDate": 2025.0,
+    "bandwidth": "819 GB/s",
+    "compute": "28.400 TFLOPS",
+    "tensorCores": "",
+    "memory": 96.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M4",
+    "releaseDate": 2024.0,
+    "bandwidth": "120 GB/s",
+    "compute": "4.600 TFLOPS",
+    "tensorCores": "",
+    "memory": 16.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M4 Pro",
+    "releaseDate": 2024.0,
+    "bandwidth": "273 GB/s",
+    "compute": "9.200 TFLOPS",
+    "tensorCores": "",
+    "memory": 24.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M4 Max",
+    "releaseDate": 2024.0,
+    "bandwidth": "546 GB/s",
+    "compute": "18.400 TFLOPS",
+    "tensorCores": "",
+    "memory": 36.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M4 Ultra",
+    "releaseDate": 2025.0,
+    "bandwidth": "1092 GB/s",
+    "compute": "36.800 TFLOPS",
+    "tensorCores": "",
+    "memory": 128.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M5",
+    "releaseDate": 2025.0,
+    "bandwidth": "153 GB/s",
+    "compute": "5.800 TFLOPS",
+    "tensorCores": "",
+    "memory": 16.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M5 Pro",
+    "releaseDate": 2026.0,
+    "bandwidth": "307 GB/s",
+    "compute": "17.500 TFLOPS",
+    "tensorCores": "",
+    "memory": 24.0
+  },
+  {
+    "brand": "Apple",
+    "name": "M5 Max",
+    "releaseDate": 2026.0,
+    "bandwidth": "614 GB/s",
+    "compute": "35.000 TFLOPS",
+    "tensorCores": "",
+    "memory": 36.0
+  }
+]
