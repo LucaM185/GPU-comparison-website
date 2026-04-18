@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPU Comparison Database</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,51 +15,58 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f1f3f7;
             min-height: 100vh;
-            padding: 20px;
+            padding: 36px 24px 48px;
+            color: #0f172a;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
         header {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         h1 {
-            font-size: 2.8em;
-            margin-bottom: 12px;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 2em;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            color: #0f172a;
+            letter-spacing: -0.6px;
+            line-height: 1.15;
+            margin-bottom: 6px;
         }
 
         .subtitle {
-            font-size: 1.15em;
-            opacity: 0.95;
-            font-weight: 300;
-            letter-spacing: 0.3px;
+            font-size: 0.95em;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        /* ── Cards ───────────────────────────── */
+        .controls,
+        .slider-group {
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            margin-bottom: 16px;
         }
 
         .controls {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+            padding: 20px 24px;
             display: flex;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
             align-items: center;
-            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
+        /* ── Search & Filters ─────────────────── */
         .search-box {
             flex: 1;
             min-width: 200px;
@@ -64,78 +74,82 @@
 
         .search-box input {
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e8e8f0;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            background: #f8f9ff;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 0.9em;
+            font-family: inherit;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .search-box input::placeholder {
+            color: #94a3b8;
         }
 
         .search-box input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #2563eb;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         .filter-group {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
         }
 
         .filter-group label {
-            font-weight: 600;
-            color: #333;
+            font-weight: 500;
+            font-size: 0.875em;
+            color: #475569;
         }
 
         .filter-group select {
-            padding: 10px 14px;
-            border: 2px solid #e8e8f0;
-            border-radius: 8px;
-            font-size: 1em;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 0.875em;
+            font-family: inherit;
             cursor: pointer;
-            transition: all 0.3s ease;
-            background: #f8f9ff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+            background: #f8fafc;
+            color: #0f172a;
             font-weight: 500;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #2563eb;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
+        /* ── Sliders ─────────────────────────── */
         .slider-group {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+            padding: 24px 28px;
             display: flex;
-            gap: 40px;
+            gap: 36px;
             align-items: flex-start;
             flex-wrap: wrap;
-            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         .slider-item {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             flex: 1;
-            min-width: 250px;
+            min-width: 240px;
         }
 
         .slider-item label {
-            font-weight: 700;
-            color: #2d2d4a;
-            font-size: 0.95em;
-            letter-spacing: 0.3px;
+            font-weight: 600;
+            font-size: 0.78em;
+            letter-spacing: 0.6px;
             text-transform: uppercase;
-            color: #667eea;
+            color: #475569;
         }
 
         .range-container {
@@ -147,7 +161,7 @@
         .sliders-control {
             position: relative;
             height: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .slider-input {
@@ -164,18 +178,19 @@
         .slider-input::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: white;
             cursor: grab;
             pointer-events: auto;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4), inset 0 0 0 2px #667eea;
-            transition: all 0.2s ease;
+            border: 2px solid #2563eb;
+            box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
+            transition: box-shadow 0.15s, transform 0.15s;
         }
 
         .slider-input::-webkit-slider-thumb:hover {
-            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5), inset 0 0 0 2px #764ba2;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
             transform: scale(1.1);
         }
 
@@ -184,20 +199,19 @@
         }
 
         .slider-input::-moz-range-thumb {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: white;
             cursor: grab;
             pointer-events: auto;
-            border: 2px solid #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-            transition: all 0.2s ease;
+            border: 2px solid #2563eb;
+            box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
+            transition: box-shadow 0.15s, transform 0.15s;
         }
 
         .slider-input::-moz-range-thumb:hover {
-            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
-            border-color: #764ba2;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
             transform: scale(1.1);
         }
 
@@ -207,79 +221,78 @@
 
         .range-track {
             position: absolute;
-            height: 8px;
-            top: 0;
-            border-radius: 4px;
-            background: #e8e8f0;
+            height: 6px;
+            top: 1px;
+            border-radius: 3px;
+            background: #e2e8f0;
             width: 100%;
             z-index: 1;
         }
 
         .range-fill {
             position: absolute;
-            height: 8px;
-            top: 0;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 6px;
+            top: 1px;
+            border-radius: 3px;
+            background: #2563eb;
             z-index: 2;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
 
         .range-labels {
             display: flex;
             justify-content: space-between;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
         }
 
         .range-label {
-            font-size: 0.8em;
-            color: #999;
-            font-weight: 600;
+            font-size: 0.75em;
+            color: #94a3b8;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            min-width: 35px;
+            letter-spacing: 0.4px;
+            min-width: 32px;
         }
 
         .range-value {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            color: #667eea;
+            background: #f1f5f9;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #2563eb;
             text-align: center;
             flex: 1;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            font-size: 0.95em;
+            border: 1px solid #e2e8f0;
+            font-size: 0.875em;
         }
 
+        /* ── Toggle ──────────────────────────── */
         .toggle-group {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
-            margin-top: 24px;
+            margin-top: 20px;
         }
 
         .toggle-group label {
-            font-weight: 700;
-            color: #2d2d4a;
+            font-weight: 600;
+            font-size: 0.78em;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #475569;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             cursor: pointer;
-            font-size: 0.95em;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            color: #667eea;
         }
 
         .toggle-switch {
             position: relative;
-            width: 50px;
-            height: 28px;
-            background: #e8e8f0;
-            border-radius: 14px;
-            transition: all 0.3s ease;
+            width: 44px;
+            height: 24px;
+            background: #cbd5e1;
+            border-radius: 12px;
+            transition: background 0.2s;
             cursor: pointer;
             border: none;
             padding: 0;
@@ -287,37 +300,36 @@
         }
 
         .toggle-switch.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            background: #2563eb;
         }
 
         .toggle-switch::after {
             content: '';
             position: absolute;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             background: white;
             border-radius: 50%;
             top: 2px;
             left: 2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: left 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
 
         .toggle-switch.active::after {
-            left: 24px;
+            left: 22px;
         }
 
+        /* ── Stats bar ───────────────────────── */
         .stats {
             background: white;
-            padding: 18px 24px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            color: #2d2d4a;
-            font-size: 0.95em;
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #667eea;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            color: #475569;
+            font-size: 0.875em;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -325,20 +337,21 @@
 
         .stats::before {
             content: '';
-            width: 8px;
-            height: 8px;
-            background: #667eea;
+            width: 7px;
+            height: 7px;
+            background: #2563eb;
             border-radius: 50%;
             flex-shrink: 0;
         }
 
+        /* ── Table ───────────────────────────── */
         .table-wrapper {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
             overflow-x: auto;
-            border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         table {
@@ -347,45 +360,46 @@
         }
 
         thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0f172a;
             color: white;
             position: sticky;
             top: 0;
         }
 
         th {
-            padding: 18px 15px;
+            padding: 14px 14px;
             text-align: left;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
             user-select: none;
-            transition: all 0.2s ease;
-            font-size: 0.9em;
-            letter-spacing: 0.3px;
+            transition: background 0.15s;
+            font-size: 0.78em;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         th:hover {
-            background: rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         th.sortable::after {
             content: ' ⇅';
-            opacity: 0.5;
+            opacity: 0.35;
         }
 
         th.sorted-asc::after {
             content: ' ↑';
-            opacity: 1;
+            opacity: 0.9;
         }
 
         th.sorted-desc::after {
             content: ' ↓';
-            opacity: 1;
+            opacity: 0.9;
         }
 
         .model-size-header {
-            font-size: 0.85em;
+            font-size: 0.78em;
             cursor: default;
         }
 
@@ -394,136 +408,156 @@
         }
 
         .model-pd {
-            font-size: 0.9em;
+            font-size: 0.875em;
             white-space: nowrap;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .pd-prefill {
-            color: #667eea;
-            font-weight: 700;
+            color: #2563eb;
+            font-weight: 600;
         }
 
         .pd-decode {
-            color: #764ba2;
-            font-weight: 700;
+            color: #7c3aed;
+            font-weight: 600;
         }
 
         td {
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f8;
-            font-size: 0.95em;
+            padding: 13px 14px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9em;
+            color: #1e293b;
         }
 
         tbody tr {
-            transition: all 0.2s ease;
-            border-bottom: 1px solid #f0f0f8;
+            transition: background 0.1s;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         tbody tr:hover {
-            background: #f8f9ff;
-            transform: translateX(2px);
+            background: #f8fafc;
         }
 
         tbody tr:nth-child(even) {
-            background: #fafbff;
+            background: #fafbfd;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background: #f1f5f9;
         }
 
         tbody tr.selected {
-            background: linear-gradient(90deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.08)) !important;
-            border-left: 4px solid #667eea;
-            padding-left: 8px;
+            background: #eff6ff !important;
+            border-left: 3px solid #2563eb;
         }
 
         .compare-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            accent-color: #667eea;
-            transition: all 0.2s ease;
-        }
-
-        .compare-checkbox:hover {
-            transform: scale(1.15);
-        }
-
-        .compare-checkbox:checked {
-            accent-color: #764ba2;
+            accent-color: #2563eb;
         }
 
         th.checkbox-header {
-            padding: 18px 12px;
-            width: 50px;
+            padding: 14px 12px;
+            width: 46px;
             text-align: center;
         }
 
         td.checkbox-cell {
-            padding: 15px 12px;
+            padding: 13px 12px;
             text-align: center;
-            width: 50px;
+            width: 46px;
         }
 
+        /* ── Brand badges ────────────────────── */
         .brand-badge {
             display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.8em;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.75em;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            letter-spacing: 0.5px;
         }
 
         .brand-amd {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
-            color: white;
+            background: #fff1ee;
+            color: #c2410c;
+            border: 1px solid #fed7aa;
         }
 
         .brand-nvidia {
-            background: linear-gradient(135deg, #76b900 0%, #8fcc14 100%);
-            color: white;
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
         }
 
         .brand-intel {
-            background: linear-gradient(135deg, #0071c5 0%, #0084d4 100%);
-            color: white;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
         }
 
         .brand-other {
-            background: linear-gradient(135deg, #999 0%, #aaa 100%);
-            color: white;
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
         }
 
+        /* ── Misc ────────────────────────────── */
         .no-data {
-            color: #ccc;
+            color: #cbd5e1;
             font-style: italic;
-            font-size: 0.9em;
+            font-size: 0.875em;
         }
 
         .empty-state {
             text-align: center;
-            padding: 50px 20px;
-            color: #999;
+            padding: 60px 20px;
+            color: #94a3b8;
             font-weight: 500;
         }
 
         .empty-state p {
-            font-size: 1.1em;
+            font-size: 1em;
         }
 
         footer {
             text-align: center;
-            color: white;
-            margin-top: 50px;
-            padding: 30px 20px;
-            opacity: 0.85;
-            font-size: 0.95em;
-            font-weight: 500;
+            color: #94a3b8;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.85em;
+            font-weight: 400;
+        }
+
+        .disclaimer {
+            background: #f8fafc;
+            border-left: 3px solid #94a3b8;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            color: #475569;
+            line-height: 1.6;
+            border: 1px solid #e2e8f0;
+            border-left-width: 3px;
+        }
+
+        .disclaimer strong {
+            color: #334155;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 20px 16px 40px;
+            }
+
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
             }
 
             .controls {
@@ -542,11 +576,11 @@
 
             th, td {
                 padding: 10px;
-                font-size: 0.9em;
+                font-size: 0.85em;
             }
 
             .brand-badge {
-                font-size: 0.75em;
+                font-size: 0.7em;
             }
         }
     </style>
@@ -554,9 +588,13 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎮 GPU Comparison Database</h1>
-            <p class="subtitle">Browse and compare graphics cards across different manufacturers</p>
+            <h1>GPU Comparison Database</h1>
+            <p class="subtitle">Browse and compare graphics cards across manufacturers</p>
         </header>
+
+        <div class="disclaimer">
+            <strong>Note:</strong> Predicted prefill/decode throughput values (tokens/sec) are <strong>purely theoretical</strong> and subject to real-world constraints. Older cards may have worse software support. Some newer cards lack tensor cores data, making prefill estimates unreliable.
+        </div>
 
         <div class="controls">
             <div class="search-box">
@@ -839,6 +877,25 @@
         }
 
         // Sort data
+        function parseSortValue(column, raw) {
+            if (raw === null || raw === undefined || raw === '' || raw === 'N/A') return null;
+
+            if (column === 'bandwidth') {
+                const m = String(raw).match(/^([\d.]+)\s*(TB|GB)/i);
+                if (!m) return null;
+                const n = parseFloat(m[1]);
+                return m[2].toUpperCase() === 'TB' ? n * 1024 : n;
+            }
+
+            if (column === 'compute' || column === 'tensorCores') {
+                const m = String(raw).match(/^([\d.]+)/);
+                return m ? parseFloat(m[1]) : null;
+            }
+
+            if (typeof raw === 'number') return raw;
+            return null;
+        }
+
         function sortData(column, th) {
             if (currentSort.column === column) {
                 currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
@@ -847,33 +904,32 @@
                 currentSort.direction = 'asc';
             }
 
-            // Update header styling
             document.querySelectorAll('th.sortable').forEach(header => {
                 header.classList.remove('sorted-asc', 'sorted-desc');
             });
-            if (currentSort.direction === 'asc') {
-                th.classList.add('sorted-asc');
-            } else {
-                th.classList.add('sorted-desc');
-            }
+            th.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+
+            const asc = currentSort.direction === 'asc';
 
             filteredData.sort((a, b) => {
-                let aVal = a[column];
-                let bVal = b[column];
+                const aRaw = a[column];
+                const bRaw = b[column];
+                const aNum = parseSortValue(column, aRaw);
+                const bNum = parseSortValue(column, bRaw);
 
-                // Handle null/empty values
-                if (aVal === null || aVal === '') aVal = Number.MAX_VALUE;
-                if (bVal === null || bVal === '') bVal = Number.MAX_VALUE;
-
-                // Numeric comparison
-                if (typeof aVal === 'number' && typeof bVal === 'number') {
-                    return currentSort.direction === 'asc' ? aVal - bVal : bVal - aVal;
+                // If both are parseable as numbers, compare numerically
+                if (aNum !== null && bNum !== null) {
+                    return asc ? aNum - bNum : bNum - aNum;
                 }
 
-                // String comparison
-                aVal = String(aVal).toLowerCase();
-                bVal = String(bVal).toLowerCase();
-                return currentSort.direction === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                // Null/unparseable values always sort last regardless of direction
+                if (aNum === null && bNum !== null) return 1;
+                if (aNum !== null && bNum === null) return -1;
+
+                // Both are strings — fall back to locale compare
+                const aStr = String(aRaw ?? '').toLowerCase();
+                const bStr = String(bRaw ?? '').toLowerCase();
+                return asc ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
             });
 
             renderTable();
